@@ -1,0 +1,107 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.github.kilnn.wristband2.sample"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+
+        manifestPlaceholders = [
+                FileAuthorities: 'com.github.kilnn.wristband2.sample.fileprovider',
+        ]
+        buildConfigField("String", "FileAuthorities", '"com.github.kilnn.wristband2.sample.fileprovider"')
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
+    //RxJava2 and RxAndroid
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //RxAndroidBle
+    implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.1'
+
+    //lib core function
+    implementation(name: 'libraryCore_v1.1.1', ext: 'aar')
+
+    //lib dfu function. Optional. If your app need dfu function.
+    implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
+
+    //room
+    implementation 'androidx.room:room-runtime:2.2.5'
+    implementation 'com.google.firebase:firebase-database:19.7.0'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    //json
+    implementation 'com.alibaba:fastjson:1.1.72.android'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
+
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.6.4'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.4'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //matisse
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
+    implementation(name: 'Lib_WheelView-release', ext: 'aar')
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

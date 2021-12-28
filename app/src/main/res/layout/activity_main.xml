@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="#FFE"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/swipe">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/disclaimer"
+        android:text="Swipe to Refresh"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/disclaimerheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disclaimer"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/disclaimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/disclaimerheading"
+        android:layout_marginBottom="20dp"
+        android:text="Select the Smart Watch device to connect via Bluetooth. \nBy pairing your device with the smart watch you agree to share your health data with this application. \nYour health data will be stored on our databases and will be used to monitor your health."
+        android:textAlignment="center"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_below="@id/swipe_layout"
+        android:layout_marginTop="20dp"
+        android:text="Developed for Prototyping purpose only.\nAll Rights Reserved."/>
+
+
+</RelativeLayout>
